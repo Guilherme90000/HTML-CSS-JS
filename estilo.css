@@ -1,0 +1,96 @@
+/* ===== ESTILO GERAL  DA PAGINA ===== */
+      body {
+      background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+      
+
+    }
+    /* ===== CAIXA DA CALCULADORA ===== */
+    .calculadora {
+      background: rgba(223, 3, 252, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00e0ff88;
+      padding: 20px;
+      width: 320px;
+      background-image: url('Ferrari.jpeg') ;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: rgb(0, 0, 0, 0.5);
+      background-blend-mode: overlay;
+        
+
+    }
+    /* ===== TELA DE EXIBIÇÃO ===== */
+
+    .tela {
+      width: 95%;
+      height: 70px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      background: #d202fcd5;
+      color: #2803fccc;
+      font-size: 2rem;
+      text-align: right;
+      padding: 10px;
+      outline: none;
+      box-shadow: 0 0 5px #00e0ff33;
+      
+    }
+/* ===== BOTOES DA CALCULADORA ===== */
+    .botoes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      background: rgba(255, 0, 0, 0.212);
+      border: 1px solid #08111355;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.2rem;
+      padding: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 0 8px #00e0ff33;
+    }
+
+    button:hover {
+      background: #0d0e0d65;
+      box-shadow: 0 0 12px #ff7300c2;
+      transform: scale(1.05);
+    }
+
+    .igual {
+      grid-column: span 2;
+      background: #00e0ff77;
+    }
+
+    .igual:hover {
+      background: #00ff22;
+      color: #f7058a62;
+    }
+
+    .limpar {
+      background: #ff005577;
+    }
+
+    .limpar:hover {
+      background: #ff0055;
+    }
+/* ===== RODAPÉ DA CALCULADORA ===== */
+    footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
