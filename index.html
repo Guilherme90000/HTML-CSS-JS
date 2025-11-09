@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora simples</title>
+    <style>
+      /* ===== ESTILO GERAL  DA PAGINA ===== */
+      body {
+      background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+      
+
+    }
+    /* ===== CAIXA DA CALCULADORA ===== */
+    .calculadora {
+      background: rgba(223, 3, 252, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00e0ff88;
+      padding: 20px;
+      width: 320px;
+      background-image: url('Pagani.jpg'); ;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: rgb(0, 0, 0, 0.5);
+      background-blend-mode: overlay;
+        
+
+    }
+    /* ===== TELA DE EXIBIÇÃO ===== */
+
+    .tela {
+      width: 95%;
+      height: 70px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      background: #d202fcd5;
+      color: #2803fccc;
+      font-size: 2rem;
+      text-align: right;
+      padding: 10px;
+      outline: none;
+      box-shadow: 0 0 5px #00e0ff33;
+      
+    }
+/* ===== BOTOES DA CALCULADORA ===== */
+    .botoes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      background: rgba(255, 0, 0, 0.212);
+      border: 1px solid #08111355;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.2rem;
+      padding: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 0 8px #00e0ff33;
+    }
+
+    button:hover {
+      background: #0d0e0d65;
+      box-shadow: 0 0 12px #ff7300c2;
+      transform: scale(1.05);
+    }
+
+    .igual {
+      grid-column: span 2;
+      background: #00e0ff77;
+    }
+
+    .igual:hover {
+      background: #00ff22;
+      color: #f7058a62;
+    }
+
+    .limpar {
+      background: #ff005577;
+    }
+
+    .limpar:hover {
+      background: #ff0055;
+    }
+/* ===== RODAPÉ DA CALCULADORA ===== */
+    footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== CAIXA DA CALCULADORA ===== -->
+    <div class="calculadora">
+        <input type="text" class="tela" id="tela" disabled>
+        <div class="botoes">
+            <button onclick="adicionarValor('7')">7</button><!--legenda-->
+            <button onclick="adicionarValor('8')">8</button><!--legenda-->
+            <button onclick="adicionarValor('9')">9</button><!--legenda-->
+
+            <button onclick="adicionarValor('/')">/</button><!--legenda-->
+            <button onclick="adicionarValor('4')">4</button><!--legenda-->
+            <button onclick="adicionarValor('5')">5</button><!--legenda-->
+
+            <button onclick="adicionarValor('6')">6</button><!--legenda-->
+            <button onclick="adicionarValor('*')">*</button><!--legenda-->
+            <button onclick="adicionarValor('1')">1</button><!--legenda-->
+
+            <button onclick="adicionarValor('2')">2</button><!--legenda-->
+            <button onclick="adicionarValor('3')">3</button><!--legenda-->
+            <button onclick="adicionarValor('-')">-</button><!--legenda-->
+
+            <button onclick="adicionarValor('0')">0</button><!--legenda-->
+            <button onclick="adicionarValor('.')">.</button><!--legenda-->
+
+            <button class="igual" onclick="calcular()">=</button><!--legenda-->
+            <button onclick="adicionarValor('+')">+</button><!--legenda-->
+            <button class="porcentagem" onclick="adicionarValor('%')">%</button><!--legenda-->
+            <button class="limpar" onclick="limparTela()">C</button><!--legenda-->
+
+        </div>
+        <!-- RODAPÉ DA CALCULADORA -->
+        <footer>Calculadora Simples</footer><!--legenda-->
+        <footer><span id="data"></span>07/11/2025</footer><!--data-->
+        <footer><span id="hora"></span> 14:30</footer><!--horario-->
+        <footer>Feito por [Guilherme Luiz]</footer><!--autor-->
+    </div>
+</body>
+</html>
+<!-- ===== SCRIPT DA CALCULADORA ===== -->
+<script>
+    const tela = document.getElementById('tela');
+
+    function adicionarValor(valor) {
+        tela.value += valor;
+    }
+
+    function calcular() {
+        try {
+            tela.value = eval(tela.value);
+        } catch (e) {
+            alert('Erro na expressão');
+        }
+    }
+
+    function limparTela() {
+        tela.value = '';
+    }
+</script>
+
+<script>
+    document.addEventListener('keydown', function(event) {
+        const key = event.key;
+        if (!isNaN(key) || ['+', '-', '*', '/', '.', '%'].includes(key)) {
+            adicionarValor(key);
+        } else if (key === 'Enter') {
+            event.preventDefault();
+            calcular();
+        } else if (key === 'Backspace') {
+            tela.value = tela.value.slice(0, -1);
+        } else if (key.toLowerCase() === 'c') {
+            limparTela();
+        }
+    });
+</script>
